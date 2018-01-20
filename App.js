@@ -5,29 +5,64 @@ import React, { Component } from 'react';
 import {
   View
 } from 'react-native';
-import Header from './src/components/Header';
-import BookList from './src/components/BookList';
+//import Header from './src/components/Header';
+//import BookList from './src/components/BookList';
+import firebase from 'firebase';
 import Navigation from './src/components/Navigation';
+import Spinner from './src/components/Spinner';
+import LoginForm from './src/components/LoginForm';
 
 export default class App extends Component {
+
+  state = { loggedIn: false };
+
+  componentWillMount() {
+      firebase.initializeApp({
+        apiKey: 'AIzaSyAzYM8nXEPAAtqz3I1Oj79Sq-5MDn00xe4',
+        authDomain: 'fbla-bookminder.firebaseapp.com',
+        databaseURL: 'https://fbla-bookminder.firebaseio.com',
+        projectId: 'fbla-bookminder',
+        storageBucket: 'fbla-bookminder.appspot.com',
+        messagingSenderId: '472255148702'
+      });
+
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          this.setState({ loggedIn: true });
+        } else {
+          this.setState({ loggedIn: false });
+        }
+      });
+    }
+
   render() {
-    return (
-      <View style={{ flex: 1 }}>
-        <Navigation />
-      </View>
-    );
+    switch (this.state.loggedIn) {
+      case false:
+        return (
+          <LoginForm />
+        );
+      case true:
+      return (
+        <View style={{ flex: 1 }}>
+          <Navigation />
+        </View>
+      );
+      default:
+      return (
+        <View style={styles.spinerStyle}>
+          <Spinner spinnerSize="large" />
+        </View>
+      );
+    }
   }
 }
 
-//Firebase JUNK - Disregard
-const firebase = require('firebase');
-
-// Initialize Firebase
-const firebaseConfig = {
-  apiKey: 'AIzaSyAzYM8nXEPAAtqz3I1Oj79Sq-5MDn00xe4',
-  authDomain: 'fbla-bookminder.firebaseio.com',
-  databaseURL: 'https://fbla-bookminder.firebaseio.com',
-  storageBucket: '',
+const styles = {
+  spinerStyle: {
+    alignSelf: 'center',
+    justifyContent: 'center'
+  },
+  viewStyle: {
+    flexDirection: 'row'
+  }
 };
-
-const firebaseApp = firebase.initializeApp(firebaseConfig);
