@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import Header from './Header';
 import BookList from './BookList';
 
@@ -9,7 +9,7 @@ class AllBooks extends Component {
   }
   render() {
     return (
-      <View>
+      <View style={{ flex: 1 }}>
         <Header headerText={'All Books'} />
         <BookList
           userName={'*'}
@@ -19,8 +19,5 @@ class AllBooks extends Component {
   }
 }
 
-const styles = {
-
-};
 
 export default AllBooks;

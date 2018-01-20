@@ -10,11 +10,12 @@ import books from './books.json';
 //Make components
 class BookList extends Component {
   //Initialize state with empty array (no data)
-  state = { books: [] };
 
   static navigationOptions = {
     tabBarLabel: 'All Books'
 }
+
+state = { books: [] };
 
   //Called the moment the component is called
   componentWillMount() {
@@ -39,7 +40,7 @@ class BookList extends Component {
     console.log(this.state);
 
     return (
-      <View>
+      <View style={{ flex: 1 }}>
         <ScrollView>
           {this.renderBooks()}
         </ScrollView>

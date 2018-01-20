@@ -11,6 +11,8 @@ const BookDetail = ({ record }) => {
     headerContentStyle,
     headerTextStyle,
     albumCoverStyle,
+    notAvailableStyle,
+    notAvailableViewStyle
   } = styles;
 
   let action = '';
@@ -19,7 +21,11 @@ const BookDetail = ({ record }) => {
       {`Check out ${title}`}
     </Button>);
   } else {
-    action = <Text>Not available</Text>;
+    action = (
+      <View style={notAvailableViewStyle}>
+        <Text style={notAvailableStyle}>Not available</Text>
+      </View>
+      );
   }
   return (
     <Card>
@@ -35,7 +41,7 @@ const BookDetail = ({ record }) => {
     </CardItem>
 
     <CardItem>
-    {action}
+      {action}
     </CardItem>
     </Card>
   );
@@ -63,10 +69,28 @@ const styles = {
     marginRight: 10
   },
   albumCoverStyle: {
-    height: 150,
-    flex: 1 / 2,
-    width: null,
+    height: 225,
+    //flex: 1 / 2,
+    width: 150,
     marginLeft: 10
+  },
+  notAvailableStyle: {
+    alignSelf: 'center',
+    color: '#999999',
+    fontSize: 16,
+    fontWeight: '600',
+    paddingTop: 10,
+    paddingBottom: 10
+  },
+  notAvailableViewStyle: {
+    flex: 1,
+    alignSelf: 'stretch',
+    backgroundColor: '#fff',
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#999999',
+    marginLeft: 5,
+    marginRight: 5
   }
 };
 

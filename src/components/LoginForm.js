@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import { Text, Alert } from 'react-native';
+import { Text, Alert, View } from 'react-native';
 import Spinner from './Spinner';
 import Card from './Card';
 import CardItem from './CardItem';
@@ -72,37 +72,39 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <Card>
+      <View>
         <Header headerText="Log In" />
-        <CardItem>
-          <Input
-            placeHolder="john@appleseed.com"
-            label="Email"
-            value={this.state.email}
-            onChangeText={email => this.setState({ email })}
-            style={{ height: 20, width: 100 }}
-          />
-        </CardItem>
+        <Card>
+          <CardItem>
+            <Input
+              placeHolder="john@appleseed.com"
+              label="Email"
+              value={this.state.email}
+              onChangeText={email => this.setState({ email })}
+              style={{ height: 20, width: 100 }}
+            />
+          </CardItem>
 
-        <CardItem>
-          <Input
-            secureTextEntry
-            placeHolder="abc123"
-            label="Password"
-            value={this.state.password}
-            onChangeText={password => this.setState({ password })}
-            style={{ height: 20, width: 100 }}
-          />
-        </CardItem>
+          <CardItem>
+            <Input
+              secureTextEntry
+              placeHolder="abc123"
+              label="Password"
+              value={this.state.password}
+              onChangeText={password => this.setState({ password })}
+              style={{ height: 20, width: 100 }}
+            />
+          </CardItem>
 
-        <Text style={styles.errorTextStyle}>
-          {this.state.error}
-        </Text>
+          <Text style={styles.errorTextStyle}>
+            {this.state.error}
+          </Text>
 
-        <CardItem>
-          {this.renderButton()}
-        </CardItem>
-      </Card>
+          <CardItem>
+            {this.renderButton()}
+          </CardItem>
+        </Card>
+      </View>
     );
   }
 }

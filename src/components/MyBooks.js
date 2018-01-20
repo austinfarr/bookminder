@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import firebase from 'firebase';
 import Header from './Header';
 import BookList from './BookList';
@@ -17,13 +17,13 @@ class MyBooks extends Component {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({ email: user.email });
-      } 
+      }
     });
   }
 
   render() {
     return (
-      <View>
+      <View style={{ flex: 1 }}>
         <Header headerText={'My Books'} />
         <BookList
           userName={this.state.email}
@@ -33,8 +33,5 @@ class MyBooks extends Component {
   }
 }
 
-const styles = {
-
-};
 
 export default MyBooks;
