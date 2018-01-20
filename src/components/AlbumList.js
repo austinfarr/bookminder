@@ -15,7 +15,7 @@ class AlbumList extends Component {
   componentWillMount() {
     //Requests HTTP and then makes the state 'albums' have a
     //list of objects and re-renders the state of albumlist
-    axios.get('https://rallycoding.herokuapp.com/api/music_albums')
+    axios.get('https://firebasestorage.googleapis.com/v0/b/fbla-bookminder.appspot.com/o/books.json?alt=media&token=28ac3f6c-8156-458d-8e80-fa916beb209a')
       .then(response => this.setState({ albums: response.data }));
   }
 

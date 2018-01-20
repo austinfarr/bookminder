@@ -7,11 +7,9 @@ import Button from './Button';
 
 const AlbumDetail = ({ record }) => {
 
-  const { thumbnail_image, title, artist, image, url } = record;
+  const { title, artist, image, url } = record;
   const {
-    thumbnailStyle,
     headerContentStyle,
-    thumbnailContainerStyle,
     headerTextStyle,
     albumCoverStyle,
   } = styles;
@@ -23,21 +21,17 @@ const AlbumDetail = ({ record }) => {
         style={albumCoverStyle}
         source={{ uri: image }}
       />
-    </CardItem>
-
-    <CardItem>
-
-        <View style={headerContentStyle}>
-        <Text style={headerTextStyle}>{title}</Text>
-        <Text>{artist}</Text>
-        </View>
+      <View style={headerContentStyle}>
+      <Text style={headerTextStyle}>{title}</Text>
+      <Text>{artist}</Text>
+      </View>
     </CardItem>
 
     <CardItem>
       <Button
         whenClicked={() => Linking.openURL(url)}
       >
-        Buy {title}
+        Check Out {title}
       </Button>
     </CardItem>
     </Card>
@@ -47,10 +41,12 @@ const AlbumDetail = ({ record }) => {
 const styles = {
   headerContentStyle: {
     flexDirection: 'column',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    paddingLeft: 10
   },
   headerTextStyle: {
-    fontSize: 18
+    fontSize: 18,
+    paddingLeft: 10
   },
   thumbnailStyle: {
     height: 50,
