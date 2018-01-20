@@ -6,7 +6,6 @@ import {
 } from 'react-native';
 import BookDetail from './BookDetail';
 import books from './books.json';
-import Header from './Header';
 
 //Make components
 class BookList extends Component {
@@ -34,7 +33,6 @@ class BookList extends Component {
 
     return (
       <View>
-        <Header headerText={'My Books'} />
         <ScrollView>
           {this.renderBooks()}
         </ScrollView>
