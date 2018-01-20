@@ -7,7 +7,6 @@ import LogOut from './LogOut';
 const Navigation = TabNavigator({
     List: { screen: AllBooks },
     My: { screen: MyBooks },
-    Add: { screen: AddBook },
     Out: { screen: LogOut }
   }
 );

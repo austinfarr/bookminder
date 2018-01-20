@@ -1,11 +1,11 @@
 //Import libraries
 import React, { Component } from 'react';
+import firebase from 'firebase';
 import {
   ScrollView,
   View
 } from 'react-native';
 import BookDetail from './BookDetail';
-import books from './books.json';
 
 //Make components
 class BookList extends Component {
@@ -19,7 +19,13 @@ state = { books: [] };
 
   //Called the moment the component is called
   componentWillMount() {
-    this.setState({ books });
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        firebase.database().ref('books').once('value', snapshot => {
+          this.setState({ books: snapshot.val() });
+        });
+      }
+});
   }
 
   //Fetching data from the state
@@ -27,7 +33,7 @@ state = { books: [] };
     const user = this.props.userName;
     let filtered = [];
     if (user === '*') {
-      filtered = books;
+      filtered = this.state.books;
     } else {
       filtered = this.state.books.filter(book => book.checkedOutBy === user);
     }
