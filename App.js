@@ -1,28 +1,23 @@
 //Here we go! :)
 
 //Import libraries
-import React from 'react';
+import React, { Component } from 'react';
 import {
   View
 } from 'react-native';
 import Header from './src/components/Header';
 import BookList from './src/components/BookList';
+import Navigation from './src/components/Navigation';
 
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
- //Put text on screen
-const App = () => (
-  <View style={{ flex: 1 }}>
-    <Header headerText={'My Books'} />
-    <BookList />
-  </View>
-);
-
-export default App;
+export default class App extends Component {
+  render() {
+    return (
+      <View style={{ flex: 1 }}>
+        <Navigation />
+      </View>
+    );
+  }
+}
 
 //Firebase JUNK - Disregard
 const firebase = require('firebase');
