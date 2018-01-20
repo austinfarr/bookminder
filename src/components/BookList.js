@@ -23,7 +23,14 @@ class BookList extends Component {
 
   //Fetching data from the state
   renderBooks() {
-    return this.state.books.map(whatever =>
+    const user = this.props.userName;
+    let filtered = [];
+    if (user === '*') {
+      filtered = books;
+    } else {
+      filtered = this.state.books.filter(book => book.checkedOutBy === user);
+    }
+    return filtered.map(whatever =>
       <BookDetail key={whatever.title} record={whatever} />);
   }
 

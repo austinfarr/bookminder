@@ -11,7 +11,9 @@ class AllBooks extends Component {
     return (
       <View>
         <Header headerText={'All Books'} />
-        <BookList />
+        <BookList
+          userName={'*'}
+        />
       </View>
     );
   }

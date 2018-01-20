@@ -11,7 +11,9 @@ class MyBooks extends Component {
     return (
       <View>
         <Header headerText={'My Books'} />
-        <BookList />
+        <BookList
+          userName={'austin@farrnet.com'}
+        />
       </View>
     );
   }
