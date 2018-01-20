@@ -1,7 +1,7 @@
 //Import libraries
 import React, { Component } from 'react';
 import {
-  View
+  ScrollView
 } from 'react-native';
 import BookDetail from './BookDetail';
 import books from './books.json';
@@ -31,9 +31,9 @@ class BookList extends Component {
     console.log(this.state);
 
     return (
-      <View>
+      <ScrollView>
         {this.renderBooks()}
-      </View>
+      </ScrollView>
     );
   }
 }
