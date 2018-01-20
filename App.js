@@ -1,6 +1,12 @@
 //Here we go! :)
 
 //Import libraries
+import React from 'react';
+import {
+  View
+} from 'react-native';
+import Header from './src/components/Header';
+import AlbumList from './src/components/AlbumList';
 
 /**
  * Sample React Native App
@@ -8,22 +14,18 @@
  * @flow
  */
 
+ //Put text on screen
+const App = () => (
+  <View style={{ flex: 1 }}>
+    <Header headerText={'My Books'} />
+    <AlbumList />
+  </View>
+);
+
+export default App;
+
+//Firebase JUNK - Disregard
 const firebase = require('firebase');
-
-import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -32,7 +34,5 @@ const firebaseConfig = {
   databaseURL: 'https://fbla-bookminder.firebaseio.com',
   storageBucket: '',
 };
-const firebaseApp = firebase.initializeApp(firebaseConfig);
 
-const App = () => (<Text>Some Different Text</Text>);
-export default App;
+const firebaseApp = firebase.initializeApp(firebaseConfig);
