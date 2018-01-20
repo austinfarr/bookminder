@@ -14,7 +14,7 @@ import LoginForm from './src/components/LoginForm';
 
 export default class App extends Component {
 
-  state = { loggedIn: false };
+  state = { loggedIn: false, email: '' };
 
   componentWillMount() {
       firebase.initializeApp({
@@ -28,9 +28,9 @@ export default class App extends Component {
 
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-          this.setState({ loggedIn: true });
+          this.setState({ loggedIn: true, email: user.email });
         } else {
-          this.setState({ loggedIn: false });
+          this.setState({ loggedIn: false, email: '' });
         }
       });
     }

@@ -6,6 +6,7 @@ import Card from './Card';
 import CardItem from './CardItem';
 import Input from './Input';
 import Button from './Button';
+import Header from './Header';
 //import TestAlert from './TestAlert';
 
 class LoginForm extends Component {
@@ -72,6 +73,7 @@ class LoginForm extends Component {
   render() {
     return (
       <Card>
+        <Header headerText="Log In" />
         <CardItem>
           <Input
             placeHolder="john@appleseed.com"

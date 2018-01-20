@@ -6,13 +6,21 @@ import CardItem from './CardItem';
 import Button from './Button';
 
 const BookDetail = ({ record }) => {
-  const { title, author, image, url } = record;
+  const { title, author, image, url, checkedOutBy } = record;
   const {
     headerContentStyle,
     headerTextStyle,
     albumCoverStyle,
   } = styles;
 
+  let action = '';
+  if (checkedOutBy === '') {
+    action = (<Button whenClicked={() => Linking.openURL(url)}>
+      {`Check out ${title}`}
+    </Button>);
+  } else {
+    action = <Text>Not available</Text>;
+  }
   return (
     <Card>
     <CardItem>
@@ -27,11 +35,7 @@ const BookDetail = ({ record }) => {
     </CardItem>
 
     <CardItem>
-      <Button
-        whenClicked={() => Linking.openURL(url)}
-      >
-        Check Out {title}
-      </Button>
+    {action}
     </CardItem>
     </Card>
   );
