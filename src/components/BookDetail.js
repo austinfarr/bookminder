@@ -5,9 +5,8 @@ import Card from './Card';
 import CardItem from './CardItem';
 import Button from './Button';
 
-const AlbumDetail = ({ record }) => {
-
-  const { title, artist, image, url } = record;
+const BookDetail = ({ record }) => {
+  const { title, author, image, url } = record;
   const {
     headerContentStyle,
     headerTextStyle,
@@ -23,7 +22,7 @@ const AlbumDetail = ({ record }) => {
       />
       <View style={headerContentStyle}>
       <Text style={headerTextStyle}>{title}</Text>
-      <Text>{artist}</Text>
+      <Text>{author}</Text>
       </View>
     </CardItem>
 
@@ -67,4 +66,4 @@ const styles = {
   }
 };
 
-export default AlbumDetail;
+export default BookDetail;
