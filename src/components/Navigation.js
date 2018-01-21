@@ -8,6 +8,22 @@ const Navigation = TabNavigator({
     List: { screen: AllBooks },
     My: { screen: MyBooks },
     Out: { screen: LogOut }
+  },
+  {
+  tabBarOptions: {
+    activeTintColor: '#000099',
+    inactiveTintColor: '#7575a3',
+    labelStyle: {
+      fontSize: 18,
+      fontFamily: 'Heiti SC'
+    },
+    style: {
+      backgroundColor: '#b3d9ff',
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      paddingBottom: 10
+    }
+    }
   }
 );
 

@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import firebase from 'firebase';
 import Header from './Header';
 import Button from './Button';
+import CardItem from './CardItem';
 
 class LogOut extends Component {
   static navigationOptions = {
@@ -12,9 +13,11 @@ class LogOut extends Component {
     return (
       <View style={styles.viewStyle}>
         <Header headerText={'Log Out'} />
-        <Button whenClicked={() => firebase.auth().signOut()}>
-          Log Out
-          </Button>
+          <CardItem>
+            <Button whenClicked={() => firebase.auth().signOut()}>
+              Log Out
+            </Button>
+          </CardItem>
       </View>
           );
   }

@@ -1,12 +1,12 @@
 //import libraries
 import React from 'react';
-import { Text, View, Image, Linking } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import Card from './Card';
 import CardItem from './CardItem';
 import Button from './Button';
 
-const BookDetail = ({ record }) => {
-  const { title, author, image, url, checkedOutBy } = record;
+const BookDetail = ({ record, onCheckOut, email }) => {
+  const { title, author, image, checkedOutBy } = record;
   const {
     headerContentStyle,
     headerTextStyle,
@@ -17,16 +17,23 @@ const BookDetail = ({ record }) => {
 
   let action = '';
   if (checkedOutBy === '') {
-    action = (<Button whenClicked={() => Linking.openURL(url)}>
+    action = (<Button whenClicked={() => onCheckOut(record)}>
       {`Check out ${title}`}
     </Button>);
-  } else {
+  } else if (checkedOutBy !== email) {
     action = (
       <View style={notAvailableViewStyle}>
         <Text style={notAvailableStyle}>Not available</Text>
       </View>
       );
+  } else {
+    action = (
+      <View style={notAvailableViewStyle}>
+        <Text style={notAvailableStyle}> Due by {(new Date(record.dueDate)).toDateString()}</Text>
+      </View>
+      );
   }
+
   return (
     <Card>
     <CardItem>
@@ -35,8 +42,8 @@ const BookDetail = ({ record }) => {
         source={{ uri: image }}
       />
       <View style={headerContentStyle}>
-      <Text style={headerTextStyle}>{title}</Text>
-      <Text>{author}</Text>
+          <Text style={headerTextStyle}>{title}</Text>
+          <Text>{author}</Text>
       </View>
     </CardItem>
 
@@ -50,12 +57,14 @@ const BookDetail = ({ record }) => {
 const styles = {
   headerContentStyle: {
     flexDirection: 'column',
-    justifyContent: 'space-around',
-    paddingLeft: 10
+    justifyContent: 'center',
+    paddingLeft: 20,
+    flex: 1
   },
   headerTextStyle: {
-    fontSize: 18,
-    paddingLeft: 10
+    fontSize: 20,
+    flexWrap: 'wrap',
+    fontFamily: 'Heiti SC'
   },
   thumbnailStyle: {
     height: 50,
