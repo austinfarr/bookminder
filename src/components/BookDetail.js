@@ -14,35 +14,42 @@ const BookDetail = ({ record, onCheckOut, email, onReturn }) => {
     albumCoverStyle,
     notAvailableStyle,
     notAvailableViewStyle,
-    dueDateStyle
+    dueDateStyle,
+    backgroundStyle
   } = styles;
 
   let action = '';
   let willShowDueDate;
   if (checkedOutBy === '') {
     action = (
-      <Button whenClicked={() => onCheckOut(record)}>
+      <ReturnButton
+        whenClicked={() => onCheckOut(record)}
+        colorButton="#0984e3"
+      >
       {`Check out ${title}`}
-    </Button>);
+      </ReturnButton>);
   } else if (checkedOutBy !== email) {
     action = (
-      <View style={notAvailableViewStyle}>
-        <Text style={notAvailableStyle}>Not available</Text>
-      </View>
+      <ReturnButton colorButton="#808e9b">
+        {`Not Available`}
+      </ReturnButton>
       );
   } else {
     action = (
       <View style={notAvailableViewStyle}>
-      <ReturnButton whenClicked={() => onReturn(record)} >
-        {`Return ${title}`}
-      </ReturnButton>
+        <ReturnButton colorButton="#00cec9" whenClicked={() => onReturn(record)} >
+          {`Return ${title}`}
+        </ReturnButton>
       </View>
       );
   }
-
   if (checkedOutBy === email) {
       willShowDueDate = (
         <Text style={dueDateStyle}>Due by {(new Date(record.dueDate)).toDateString()}</Text>
+      );
+  } else if (checkedOutBy !== '') {
+      willShowDueDate = (
+        <Text style={dueDateStyle}>Due back by {(new Date(record.dueDate)).toDateString()}</Text>
       );
   }
   return (
@@ -54,7 +61,7 @@ const BookDetail = ({ record, onCheckOut, email, onReturn }) => {
       />
       <View style={headerContentStyle}>
           <Text style={headerTextStyle}>{title}</Text>
-          <Text>{author}</Text>
+          <Text>By {author}</Text>
           {willShowDueDate}
       </View>
     </CardItem>
@@ -71,17 +78,13 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'center',
     paddingLeft: 20,
-    flex: 1
+    flex: 1,
+    //backgroundColor: '#d2dae2'
   },
   headerTextStyle: {
     fontSize: 20,
     flexWrap: 'wrap',
     fontFamily: 'Heiti SC'
-  },
-  thumbnailStyle: {
-    height: 50,
-    width: 50,
-    borderRadius: 5
   },
   thumbnailContainerStyle: {
     justifyContent: 'center',
@@ -91,7 +94,6 @@ const styles = {
   },
   albumCoverStyle: {
     height: 150,
-    //flex: 1 / 2,
     width: 100,
     marginLeft: 10
   },
@@ -100,20 +102,19 @@ const styles = {
     color: '#999999',
     fontSize: 16,
     fontWeight: '600',
-    paddingTop: 10,
-    paddingBottom: 10
   },
   notAvailableViewStyle: {
     flex: 1,
     alignSelf: 'stretch',
     backgroundColor: '#fff',
-    marginLeft: 5,
-    marginRight: 5,
-    borderColor: '#4dff88'
+    //borderColor: '#4dff88'
   },
   dueDateStyle: {
     paddingTop: 10,
     textDecorationLine: 'underline'
+  },
+  backgroundStyle: {
+    //backgroundColor: '#d2dae2'
   }
 };
 

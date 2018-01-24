@@ -85,7 +85,7 @@ state = { books: [], email: '' };
     console.log(this.state);
 
     return (
-      <View style={{ flex: 1 }}>
+      <View style={styles.backgroundStyle}>
         <ScrollView>
           {this.renderBooks()}
         </ScrollView>
@@ -93,6 +93,12 @@ state = { books: [], email: '' };
     );
   }
 }
+
+const styles = {
+  backgroundStyle: {
+    flex: 1,
+  }
+};
 
 //Export component
 export default BookList;

@@ -26,7 +26,7 @@ const NewInput = ({ label, value, onChangeText, placeHolder, secureTextEntry, re
 
 const styles = {
   inputStyle1: {
-    height: 40,
+    height: 50,
     backgroundColor: 'rgba(255,255,255,0.2)',
     marginBottom: 5,
     color: '#FFF',

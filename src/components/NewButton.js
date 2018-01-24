@@ -22,7 +22,7 @@ const styles = {
     paddingVertical: 10,
     backgroundColor: '#2980b9',
     marginTop: 10,
-    marginBottom: 20,
+    marginBottom: 40,
     marginHorizontal: 20
   },
   buttonStyle: {

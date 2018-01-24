@@ -17,7 +17,7 @@ const Navigation = TabNavigator({
       fontFamily: 'Heiti SC'
     },
     style: {
-      backgroundColor: '#b3d9ff',
+      backgroundColor: '#d2dae2',
       flexDirection: 'row',
       justifyContent: 'space-around',
       paddingBottom: 10

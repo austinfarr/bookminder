@@ -81,7 +81,7 @@ class NewLoginForm extends Component {
         <View style={styles.logoContainerStyle}>
           <Image
             style={styles.logo}
-            source={require('./AppIcon.png')}
+            source={require('./Pictures/AppIcon.png')}
           />
           <Text style={styles.titleStyle}>Keep track of all your books in one place</Text>
         </View>
