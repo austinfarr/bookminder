@@ -11,6 +11,7 @@ import firebase from 'firebase';
 import Navigation from './src/components/Navigation';
 import Spinner from './src/components/Spinner';
 import LoginForm from './src/components/LoginForm';
+import NewLoginForm from './src/components/NewLoginForm';
 
 export default class App extends Component {
 
@@ -39,7 +40,7 @@ export default class App extends Component {
     switch (this.state.loggedIn) {
       case false:
         return (
-          <LoginForm />
+          <NewLoginForm />
         );
       case true:
       return (

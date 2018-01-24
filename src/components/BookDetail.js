@@ -4,20 +4,24 @@ import { Text, View, Image } from 'react-native';
 import Card from './Card';
 import CardItem from './CardItem';
 import Button from './Button';
+import ReturnButton from './ReturnButton'
 
-const BookDetail = ({ record, onCheckOut, email }) => {
+const BookDetail = ({ record, onCheckOut, email, onReturn }) => {
   const { title, author, image, checkedOutBy } = record;
   const {
     headerContentStyle,
     headerTextStyle,
     albumCoverStyle,
     notAvailableStyle,
-    notAvailableViewStyle
+    notAvailableViewStyle,
+    dueDateStyle
   } = styles;
 
   let action = '';
+  let willShowDueDate;
   if (checkedOutBy === '') {
-    action = (<Button whenClicked={() => onCheckOut(record)}>
+    action = (
+      <Button whenClicked={() => onCheckOut(record)}>
       {`Check out ${title}`}
     </Button>);
   } else if (checkedOutBy !== email) {
@@ -29,11 +33,18 @@ const BookDetail = ({ record, onCheckOut, email }) => {
   } else {
     action = (
       <View style={notAvailableViewStyle}>
-        <Text style={notAvailableStyle}> Due by {(new Date(record.dueDate)).toDateString()}</Text>
+      <ReturnButton whenClicked={() => onReturn(record)} >
+        {`Return ${title}`}
+      </ReturnButton>
       </View>
       );
   }
 
+  if (checkedOutBy === email) {
+      willShowDueDate = (
+        <Text style={dueDateStyle}>Due by {(new Date(record.dueDate)).toDateString()}</Text>
+      );
+  }
   return (
     <Card>
     <CardItem>
@@ -44,6 +55,7 @@ const BookDetail = ({ record, onCheckOut, email }) => {
       <View style={headerContentStyle}>
           <Text style={headerTextStyle}>{title}</Text>
           <Text>{author}</Text>
+          {willShowDueDate}
       </View>
     </CardItem>
 
@@ -78,9 +90,9 @@ const styles = {
     marginRight: 10
   },
   albumCoverStyle: {
-    height: 225,
+    height: 150,
     //flex: 1 / 2,
-    width: 150,
+    width: 100,
     marginLeft: 10
   },
   notAvailableStyle: {
@@ -95,11 +107,13 @@ const styles = {
     flex: 1,
     alignSelf: 'stretch',
     backgroundColor: '#fff',
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#999999',
     marginLeft: 5,
-    marginRight: 5
+    marginRight: 5,
+    borderColor: '#4dff88'
+  },
+  dueDateStyle: {
+    paddingTop: 10,
+    textDecorationLine: 'underline'
   }
 };
 

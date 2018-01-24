@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import { Text, Alert, View } from 'react-native';
+import { Text, Alert, View, Image, KeyboardAvoidingView, StatusBar } from 'react-native';
 import Spinner from './Spinner';
 import Card from './Card';
 import CardItem from './CardItem';
 import Input from './Input';
-import Button from './Button';
+import NewButton from './NewButton';
 import Header from './Header';
+import NewInput from './NewInput';
 //import TestAlert from './TestAlert';
 
-class LoginForm extends Component {
+class NewLoginForm extends Component {
   state = { email: '', password: '', error: '', loading: false };
 
   onButtonPress() {
@@ -62,48 +63,49 @@ class LoginForm extends Component {
     }
 
     return (
-      <Button
+      <NewButton
         whenClicked={this.onButtonPress.bind(this)}
+        value={this.state.email}
       >
-        Log In
-      </Button>
+        LOGIN
+      </NewButton>
     );
   }
   render() {
     return (
-      <View style={styles.containerStyle}>
-        <Header headerText="Log In" />
-        <Card>
-          <CardItem>
-            <Input
-              placeHolder="email"
-              label="https://marketplace.canva.com/MAB7lEdfd4A/1/thumbnail/canva-person-silhouette-face-profile-man-guy-head-icon-vector-graphic-MAB7lEdfd4A.png"
-              value={this.state.email}
-              onChangeText={email => this.setState({ email })}
-              style={{ height: 20, width: 100 }}
-            />
-          </CardItem>
 
-          <CardItem>
-            <Input
-              secureTextEntry
-              placeHolder="password"
-              label="https://d30y9cdsu7xlg0.cloudfront.net/png/10982-200.png"
-              value={this.state.password}
-              onChangeText={password => this.setState({ password })}
-              style={{ height: 20, width: 100 }}
-            />
-          </CardItem>
+      <KeyboardAvoidingView behavior="padding" style={styles.containerStyle}>
+        <StatusBar
+          barStyle="light-content"
+        />
+        <View style={styles.logoContainerStyle}>
+          <Image
+            style={styles.logo}
+            source={require('./AppIcon.png')}
+          />
+          <Text style={styles.titleStyle}>Keep track of all your books in one place</Text>
+        </View>
 
-          <Text style={styles.errorTextStyle}>
-            {this.state.error}
-          </Text>
+        <NewInput
+          placeHolder="email"
+          value={this.state.email}
+          onChangeText={email => this.setState({ email })}
+          returnKeyType="next"
+          keyboardType="email-address"
+          //onSubmitEditing={() => this.passwordInput.focus()}
+        />
 
-          <CardItem>
-            {this.renderButton()}
-          </CardItem>
-        </Card>
-      </View>
+        <NewInput
+          placeHolder="password"
+          secureTextEntry
+          value={this.state.password}
+          onChangeText={password => this.setState({ password })}
+          returnKeyType="go"
+          //ref={(input) => this.passwordInput = input}
+        />
+
+        {this.renderButton()}
+      </KeyboardAvoidingView>
     );
   }
 }
@@ -116,15 +118,25 @@ const styles = {
   },
   containerStyle: {
     flex: 1,
-    backgroundColor: '#FFF'
+    backgroundColor: '#3498DB'
+  },
+  logo: {
+    width: 125,
+    height: 125
+  },
+  logoContainerStyle: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   titleStyle: {
     color: '#FFF',
     marginTop: 10,
     width: 180,
     textAlign: 'center',
-    opacity: 0.9
+    opacity: 0.9,
+    fontSize: 18
   }
 };
 
-export default LoginForm;
+export default NewLoginForm;

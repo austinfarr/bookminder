@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
-const Button = ({ whenClicked, children }) => {
+const ReturnButton = ({ whenClicked, children }) => {
   const { buttonStyle, textStyle } = styles;
 
   return (
@@ -18,18 +18,19 @@ const Button = ({ whenClicked, children }) => {
 
 const styles = {
   buttonStyle: {
+
     flex: 1,
     alignSelf: 'stretch',
-    backgroundColor: '#fff',
-    borderColor: '#007aff',
-    borderRadius: 5,
+    backgroundColor: '#ff9b1f',
+    borderColor: '#ffffff',
+    borderRadius: 10,
     borderWidth: 1,
     marginLeft: 5,
     marginRight: 5
   },
   textStyle: {
     alignSelf: 'center',
-    color: '#007aff',
+    color: '#ffffff',
     fontSize: 16,
     fontWeight: '600',
     paddingTop: 10,
@@ -37,4 +38,4 @@ const styles = {
   }
 };
 
-export default Button;
+export default ReturnButton;

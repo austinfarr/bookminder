@@ -29,20 +29,37 @@ state = { books: [], email: '' };
 });
   }
 
-  checkOut = (book) => {
-  const firstDay = new Date();
-  book.checkedOutBy = this.state.email;
-  const dueDate = new Date(firstDay.getTime() + 7 * 24 * 60 * 60 * 1000);
-  book.dueDate = dueDate.getTime();
-  const email = this.state.email;
+  saveToDatabase(book) {
     firebase.database().ref('books').child(book.uuid).set(book)
     .then(() => {
-        console.log(`${book.title} checked out by ${email}`);var firstDay = new Date("2009/06/25");
+        console.log(`${book.title} saved`);
     })
     .catch((e) => {
-        console.log(`Error checking out ${book.title} (${book.uuid}) by ${email}`);
+        console.log(`Error saving ${book.title} (${book.uuid}): ${e}`);
     });
+  }
+
+  returnBook = (b) => {
+    const book = b;
+    book.returnedBy = this.state.email;
+    book.checkedOutBy = '';
+    const email = this.state.email;
+    console.log(`${book.title} returned by ${email}`);
+    this.saveToDatabase(book);
+    book.dueDate = undefined;
+  }
+
+  checkOut = (b) => {
+    const book = b;
+    const oneWeek = 7 * 24 * 60 * 60 * 1000;
+    const firstDay = new Date();
+    book.checkedOutBy = this.state.email;
+    const dueDate = new Date(firstDay.getTime() + oneWeek);
+    book.dueDate = dueDate.getTime();
+    book.returnedBy = '';
+    this.saveToDatabase(book);
 }
+
 
   //Fetching data from the state
   renderBooks() {
@@ -58,6 +75,7 @@ state = { books: [], email: '' };
         key={whatever.title}
         record={whatever}
         onCheckOut={this.checkOut}
+        onReturn={this.returnBook}
         email={this.state.email}
       />);
   }
