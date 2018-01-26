@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import Header from './Header';
 import BookList from './BookList';
+//import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 class AllBooks extends Component {
   static navigationOptions = {
-    tabBarLabel: 'All Books'
+    tabBarLabel: 'All Books',
   }
   render() {
     return (

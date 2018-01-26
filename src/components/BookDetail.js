@@ -3,8 +3,8 @@ import React from 'react';
 import { Text, View, Image } from 'react-native';
 import Card from './Card';
 import CardItem from './CardItem';
-import Button from './Button';
-import ReturnButton from './ReturnButton'
+//import Button from './Button';
+import ReturnButton from './ReturnButton';
 
 const BookDetail = ({ record, onCheckOut, email, onReturn }) => {
   const { title, author, image, checkedOutBy } = record;
@@ -12,10 +12,8 @@ const BookDetail = ({ record, onCheckOut, email, onReturn }) => {
     headerContentStyle,
     headerTextStyle,
     albumCoverStyle,
-    notAvailableStyle,
     notAvailableViewStyle,
     dueDateStyle,
-    backgroundStyle
   } = styles;
 
   let action = '';
@@ -31,7 +29,7 @@ const BookDetail = ({ record, onCheckOut, email, onReturn }) => {
   } else if (checkedOutBy !== email) {
     action = (
       <ReturnButton colorButton="#808e9b">
-        {`Not Available`}
+        {'Not Available'}
       </ReturnButton>
       );
   } else {
@@ -111,7 +109,7 @@ const styles = {
   },
   dueDateStyle: {
     paddingTop: 10,
-    textDecorationLine: 'underline'
+    //textDecorationLine: 'underline'
   },
   backgroundStyle: {
     //backgroundColor: '#d2dae2'

@@ -1,9 +1,9 @@
-import { TabNavigator } from 'react-navigation';
+import { DrawerNavigator } from 'react-navigation';
 import AllBooks from './AllBooks';
 import MyBooks from './MyBooks';
 import LogOut from './LogOut';
 
-const Navigation = TabNavigator({
+const NewNavigation = DrawerNavigator({
     List: { screen: AllBooks },
     My: { screen: MyBooks },
     Out: { screen: LogOut }
@@ -26,4 +26,4 @@ const Navigation = TabNavigator({
   }
 );
 
-export default Navigation;
+export default NewNavigation;

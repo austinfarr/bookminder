@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput, View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 
 const ReturnButton = ({ whenClicked, children, colorButton }) => {
   const styles = {

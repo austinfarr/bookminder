@@ -9,6 +9,7 @@ import {
 //import BookList from './src/components/BookList';
 import firebase from 'firebase';
 import Navigation from './src/components/Navigation';
+import NewNavigation from './src/components/NewNavigation';
 import Spinner from './src/components/Spinner';
 import LoginForm from './src/components/LoginForm';
 import NewLoginForm from './src/components/NewLoginForm';

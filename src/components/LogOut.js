@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { View, Image, Text, ScrollView } from 'react-native';
 import firebase from 'firebase';
 import Header from './Header';
-import Button from './Button';
+//import Button from './Button';
+import ReturnButton from './ReturnButton';
 import CardItem from './CardItem';
 
 class LogOut extends Component {
@@ -24,9 +25,9 @@ class LogOut extends Component {
               />
             </CardItem>
             <CardItem>
-              <Button whenClicked={() => firebase.auth().signOut()}>
+              <ReturnButton colorButton={'#00d8d6'} whenClicked={() => firebase.auth().signOut()}>
                 Log Out
-              </Button>
+              </ReturnButton>
             </CardItem>
           </ScrollView>
       </View>
