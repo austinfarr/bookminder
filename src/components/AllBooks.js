@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Button } from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Header from './Header';
 import BookList from './BookList';
-//import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 class AllBooks extends Component {
   static navigationOptions = {
@@ -14,6 +14,11 @@ class AllBooks extends Component {
         <Header headerText={'All Books'} />
         <BookList
           userName={'*'}
+        />
+
+        <Button
+          onPress={() => this.props.navigation.navigate('DrawerOpen')}
+          title="Menu"
         />
       </View>
     );

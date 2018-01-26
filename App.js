@@ -46,7 +46,7 @@ export default class App extends Component {
       case true:
       return (
         <View style={{ flex: 1 }}>
-          <Navigation />
+          <NewNavigation />
         </View>
       );
       default:

@@ -4,17 +4,24 @@ import MyBooks from './MyBooks';
 import LogOut from './LogOut';
 
 const NewNavigation = DrawerNavigator({
-    List: { screen: AllBooks },
-    My: { screen: MyBooks },
-    Out: { screen: LogOut }
+    'All Books': {
+      path: '/',
+      screen: AllBooks
+    },
+    'My Books': {
+      path: '/sent',
+      screen: MyBooks
+    }
   },
   {
-  tabBarOptions: {
-    activeTintColor: '#000099',
-    inactiveTintColor: '#7575a3',
-    labelStyle: {
-      fontSize: 18,
-      fontFamily: 'Heiti SC'
+    initialRouteName: 'All Books',
+    drawerPosition: 'left',
+    tabBarOptions: {
+      activeTintColor: '#000099',
+      inactiveTintColor: '#7575a3',
+      labelStyle: {
+        fontSize: 18,
+        fontFamily: 'Heiti SC'
     },
     style: {
       backgroundColor: '#d2dae2',
