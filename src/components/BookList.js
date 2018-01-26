@@ -22,15 +22,22 @@ state = { books: [], email: '' };
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({ email: user.email });
-        firebase.database().ref('books').on('value', snapshot => {
-          this.setState({ books: snapshot.val() });
+        firebase.database().ref('library').on('value', snapshot => {
+          const books = [];
+          snapshot.forEach((element) => {
+            const book = element.val();
+            book.isbn = element.key;
+            books.push(book);
+          });
+
+          this.setState({ books });
         });
       }
 });
   }
 
   saveToDatabase(book) {
-    firebase.database().ref('books').child(book.uuid).set(book)
+    firebase.database().ref().child('library').child(book.isbn).set(book)
     .then(() => {
         console.log(`${book.title} saved`);
     })

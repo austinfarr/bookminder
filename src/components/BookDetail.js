@@ -7,7 +7,9 @@ import CardItem from './CardItem';
 import ReturnButton from './ReturnButton';
 
 const BookDetail = ({ record, onCheckOut, email, onReturn }) => {
-  const { title, author, image, checkedOutBy } = record;
+  const { title, checkedOutBy } = record;
+  const image = record.imageLinks.smallThumbnail;
+  const author = record.authors[0];
   const {
     headerContentStyle,
     headerTextStyle,
@@ -18,7 +20,7 @@ const BookDetail = ({ record, onCheckOut, email, onReturn }) => {
 
   let action = '';
   let willShowDueDate;
-  if (checkedOutBy === '') {
+  if (checkedOutBy === '' || typeof (checkedOutBy) === 'undefined') {
     action = (
       <ReturnButton
         whenClicked={() => onCheckOut(record)}
