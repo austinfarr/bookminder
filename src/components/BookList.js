@@ -37,7 +37,8 @@ state = { books: [], email: '' };
   }
 
   saveToDatabase(book) {
-    firebase.database().ref().child('library').child(book.isbn).set(book)
+    firebase.database().ref().child('library').child(book.isbn)
+    .set(book)
     .then(() => {
         console.log(`${book.title} saved`);
     })

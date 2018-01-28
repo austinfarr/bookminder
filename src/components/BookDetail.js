@@ -8,7 +8,7 @@ import ReturnButton from './ReturnButton';
 
 const BookDetail = ({ record, onCheckOut, email, onReturn }) => {
   const { title, checkedOutBy } = record;
-  const image = record.imageLinks.smallThumbnail;
+  const image = record.imageLinks.smallThumbnail.replace(/^http:\/\//i, 'https://');
   const author = record.authors[0];
   const {
     headerContentStyle,
@@ -26,7 +26,7 @@ const BookDetail = ({ record, onCheckOut, email, onReturn }) => {
         whenClicked={() => onCheckOut(record)}
         colorButton="#0984e3"
       >
-      {`Check out ${title}`}
+      {'Check out book'}
       </ReturnButton>);
   } else if (checkedOutBy !== email) {
     action = (
@@ -47,7 +47,7 @@ const BookDetail = ({ record, onCheckOut, email, onReturn }) => {
       willShowDueDate = (
         <Text style={dueDateStyle}>Due by {(new Date(record.dueDate)).toDateString()}</Text>
       );
-  } else if (checkedOutBy !== '') {
+  } else if (checkedOutBy !== '' && typeof (checkedOutBy) !== 'undefined') {
       willShowDueDate = (
         <Text style={dueDateStyle}>Due back by {(new Date(record.dueDate)).toDateString()}</Text>
       );

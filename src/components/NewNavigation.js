@@ -11,6 +11,10 @@ const NewNavigation = DrawerNavigator({
     'My Books': {
       path: '/sent',
       screen: MyBooks
+    },
+    'Log Out': {
+      path: '/',
+      screen: LogOut
     }
   },
   {

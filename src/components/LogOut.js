@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, Text, ScrollView } from 'react-native';
+import { View, Image, Text, ScrollView, Button } from 'react-native';
 import firebase from 'firebase';
 import Header from './Header';
 //import Button from './Button';
@@ -30,6 +30,10 @@ class LogOut extends Component {
               </ReturnButton>
             </CardItem>
           </ScrollView>
+          <Button
+            onPress={() => this.props.navigation.navigate('DrawerOpen')}
+            title="Menu"
+          />
       </View>
           );
   }
