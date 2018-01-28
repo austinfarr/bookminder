@@ -1,4 +1,3 @@
-//Here we go! :)
 
 //Import libraries
 import React, { Component } from 'react';
