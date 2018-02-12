@@ -1,11 +1,6 @@
 # bookminder
-This app allows users to login/make an account and can then check out library books. 
-This app assists users in keeping up with which books they have checked out and the due dates. Users can browse all books or
-look at only the books they have checked out.
+This app assists users in keeping up with the library books they have checked out and their due dates.
 
-Navigating: 
-1. First log in to the app. To do this just enter your email and password (even if you have not created an account yet) and 
-press log in. A message will pop up prompting the user to create a new account with that information.
-2. Once logged in, the app will take you to "Browse Books" page where you vcan see all the books available. To access the 
-menu, press the thee bars icon in the upper left of your screen.
-3. From there you have the options to go to "My Books", "Library Layout", "Feedback", or "Log out".
+Users can browse all books or look at only the books they have checked out. If the user wants a book that is already checked out, they may reserve the book and will get a push notification whenever the book is available.
+
+The app is designed to be used when the user is checking out physical books at the library. They can check out the books on the app and it will set up the due date and remind the user when it is overdue.
